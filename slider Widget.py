@@ -7,7 +7,7 @@ from PyQt5.QtGui import QFont
 class Window(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Vertical and Horizontal Box Layout")
+        self.setWindowTitle("Slider Widget")
         self.setGeometry(350, 150, 500, 500)
 
         self.UI()
