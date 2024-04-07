@@ -18,11 +18,17 @@ class Window(QWidget):
         self.editor = QTextEdit()
         fileButton = QPushButton("Open File")
         fileButton.clicked.connect(self.openFile)
+        fontButton = QPushButton("Change Font")
+        fontButton.clicked.connect(self.changeFont)
+        colorButton = QPushButton("Change Color")
+        colorButton.clicked.connect(self.changeColor)
 
         vbox.addWidget(self.editor)
         vbox.addLayout(hbox)
         hbox.addStretch()
         hbox.addWidget(fileButton)
+        hbox.addWidget(fontButton)
+        hbox.addWidget(colorButton)
         hbox.addStretch()
         self.setLayout(vbox)
 
@@ -37,6 +43,14 @@ class Window(QWidget):
         file = open(fileUrl, 'r')
         content = file.read()
         self.editor.setText(content)
+
+    def changeFont(self):
+        font = QFontDialog.getFont()
+        self.editor.setCurrentFont(font[0])
+
+    def changeColor(self):
+        color = QColorDialog.getColor()
+        self.editor.setTextColor(color)
 
 
 def main():
